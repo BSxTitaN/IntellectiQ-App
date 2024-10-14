@@ -10,6 +10,7 @@ class AppTheme {
   static const Color textTriColor = Color(0xff171717);
   static const Color modalColor = Color(0xff171717);
   static const Color btnDisableColor = Color(0xff171717);
+  static const Color cardColor = Color(0xff171717);
 
   static const Color errLightColor = Color(0xffFAD6D6);
   static const Color errAppColor = Color(0xffF4484A);

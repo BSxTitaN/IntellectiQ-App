@@ -1,10 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:intellectiq/screens/home/home.dart';
+import 'package:intellectiq/utils/ai_util.dart';
+import 'package:provider/provider.dart';
+import 'package:sembast/sembast_io.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:path/path.dart';
 
 import 'design/colors.dart';
 
-void main() {
-  runApp(const MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final appDir = await getApplicationDocumentsDirectory();
+  await appDir.create(recursive: true);
+  final dbPath = join(appDir.path, 'intellectiq.db');
+  final db = await databaseFactoryIo.openDatabase(dbPath);
+
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => ApiKeyProvider(db),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

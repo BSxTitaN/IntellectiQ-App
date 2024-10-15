@@ -9,6 +9,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.6.0"
+  assemblyai_flutter_sdk:
+    dependency: "direct main"
+    description:
+      name: assemblyai_flutter_sdk
+      sha256: "06f5430d53b55d2e332cddccd6c9157031c257bff393723ce11789950bc50eee"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.10"
   async:
     dependency: transitive
     description:
@@ -129,7 +137,7 @@ packages:
     source: sdk
     version: "0.0.0"
   http:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: http
       sha256: b9c29a161230ee03d3ccf545097fccd9b87a5264228c5d348202e0f0c28f9010
@@ -304,6 +312,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.1.2"
+  read_pdf_text:
+    dependency: "direct main"
+    description:
+      name: read_pdf_text
+      sha256: a3765104aecfbb9bb7f27c5825d5d1b313adb86b39af8fc3ced738345be93052
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.2"
   sembast:
     dependency: "direct main"
     description:

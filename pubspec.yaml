@@ -41,6 +41,9 @@ dependencies:
   provider: ^6.1.2
   path: ^1.8.2
   path_provider: ^2.1.4
+  read_pdf_text: ^0.2.2
+  assemblyai_flutter_sdk: ^0.0.10
+  http: ^1.2.2
 
 dev_dependencies:
   flutter_test:
@@ -68,7 +71,6 @@ flutter:
   assets:
     - assets/
     - assets/icon/
-    - assets/json/
     - assets/rive/
 
   # An image asset can refer to one or more resolution-specific "variants", see

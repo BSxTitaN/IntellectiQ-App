@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intellectiq/screens/home/home.dart';
 import 'package:intellectiq/utils/ai_util.dart';
+import 'package:intellectiq/utils/course_storage.dart';
 import 'package:provider/provider.dart';
 import 'package:sembast/sembast_io.dart';
 import 'package:path_provider/path_provider.dart';
@@ -17,8 +18,11 @@ Future<void> main() async {
   final db = await databaseFactoryIo.openDatabase(dbPath);
 
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => ApiKeyProvider(db),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => ApiKeyProvider(db)),
+        Provider(create: (context) => CourseStorage(db)),
+      ],
       child: const MyApp(),
     ),
   );

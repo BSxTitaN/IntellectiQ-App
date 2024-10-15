@@ -26,49 +26,65 @@ class SettingPage extends StatelessWidget {
       widget: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          _buildApiKeyInput(
+            context,
             'OpenAI API Key',
-            style: TextStyle(
-              fontSize: AppFont.head4,
-              fontWeight: FontWeight.bold,
-              color: AppTheme.textMainColor,
-            ),
+            'Enter your OpenAI API key',
+                (value) => context.read<ApiKeyProvider>().setOpenAiKey(value),
+                () => context.read<ApiKeyProvider>().openAiKey,
           ),
-          const SizedBox(height: 8),
-          const Text(
-            'Enter your OpenAI API key to utilise the power of IntellectiQ app properly',
-            style: TextStyle(
+          const SizedBox(height: 24),
+          _buildApiKeyInput(
+            context,
+            'AssemblyAI API Key',
+            'Enter your AssemblyAI API key',
+                (value) => context.read<ApiKeyProvider>().setAssemblyAiKey(value),
+                () => context.read<ApiKeyProvider>().assemblyAiKey,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildApiKeyInput(
+      BuildContext context,
+      String title,
+      String hint,
+      Function(String) onChanged,
+      String Function() getValue,
+      ) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          title,
+          style: const TextStyle(
+            fontSize: AppFont.head4,
+            fontWeight: FontWeight.bold,
+            color: AppTheme.textMainColor,
+          ),
+        ),
+        const SizedBox(height: 8),
+        Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(color: AppTheme.primaryAppColor),
+          ),
+          child: TextField(
+            controller: TextEditingController(text: getValue()),
+            onChanged: onChanged,
+            decoration: InputDecoration(
+              hintText: hint,
+              border: InputBorder.none,
+              contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+            ),
+            style: const TextStyle(
               fontSize: AppFont.body,
               color: AppTheme.textMainColor,
             ),
           ),
-          const SizedBox(height: 16),
-          Consumer<ApiKeyProvider>(
-            builder: (context, apiKeyProvider, child) {
-              return Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
-                  border: Border.all(color: AppTheme.primaryAppColor),
-                ),
-                child: TextField(
-                  controller: TextEditingController(text: apiKeyProvider.apiKey),
-                  onChanged: (value) => apiKeyProvider.setApiKey(value),
-                  decoration: const InputDecoration(
-                    hintText: 'Enter your OpenAI API key',
-                    border: InputBorder.none,
-                    contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-                  ),
-                  style: const TextStyle(
-                    fontSize: AppFont.body,
-                    color: AppTheme.textMainColor,
-                    fontWeight: FontWeight.bold
-                  ),
-                ),
-              );
-            },
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

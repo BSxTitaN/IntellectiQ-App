@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bounceable/flutter_bounceable.dart';
 import 'package:intellectiq/design/app_font.dart';
 import 'package:intellectiq/design/colors.dart';
 
@@ -18,8 +19,9 @@ class CourseCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8.0),
-      child: GestureDetector(
+      child: Bounceable(
         onTap: onTap,
+        duration: const Duration(milliseconds: 300),
         child: Container(
           decoration: BoxDecoration(
             color: AppTheme.cardColor,

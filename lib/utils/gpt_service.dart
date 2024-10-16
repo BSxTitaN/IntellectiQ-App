@@ -25,7 +25,7 @@ class GptService {
         'messages': [
           {
             'role': 'system',
-            'content': 'You are a course creator. Create a course based on the given context.'
+            'content': 'You are a course creator. Create a course based on the given context for your user to help them learn that document much better so they can ace their exams.'
           },
           {
             'role': 'user',
@@ -59,7 +59,7 @@ class GptService {
                       },
                       'description': {
                         'type': 'string',
-                        'description': 'A description of the module content.'
+                        'description': 'Content of the given module that teaches users specifically about the module in detail.'
                       }
                     },
                     'required': ['title', 'description'],

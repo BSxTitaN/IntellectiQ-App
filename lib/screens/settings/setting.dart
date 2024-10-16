@@ -21,6 +21,7 @@ class SettingPage extends StatelessWidget {
             color: AppTheme.textMainColor,
           ),
         ),
+        iconTheme: const IconThemeData(color: AppTheme.primaryAppColor),
         backgroundColor: Colors.transparent,
       ),
       widget: Column(
